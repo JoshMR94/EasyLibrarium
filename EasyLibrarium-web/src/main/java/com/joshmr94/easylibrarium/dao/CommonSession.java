@@ -37,7 +37,7 @@ public abstract class CommonSession<T> {
             synchronized (CommonSession.class) {
                 if (emf == null) {
                     LOG.debug("EntityManagerFactory initialization...");
-                    emf = Persistence.createEntityManagerFactory("com.inerza_SolicitudHSR_PU");
+                    emf = Persistence.createEntityManagerFactory("com.joshmr94_EasyLibrarium_PU");
                     LOG.debug("EntityManagerFactory created.");
                 }
             }
