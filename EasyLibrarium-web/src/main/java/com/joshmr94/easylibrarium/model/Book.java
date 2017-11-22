@@ -5,6 +5,7 @@
  */
 package com.joshmr94.easylibrarium.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "book")
-@XmlRootElement
 public class Book implements Serializable{
     
     @Id
@@ -53,9 +53,11 @@ public class Book implements Serializable{
     private Date publicationDate;
     
     @ManyToMany(mappedBy = "books") //mapped for books attribute in User
+    @JsonIgnore
     private List<LUser> users;
     
     @ManyToMany(mappedBy = "books") //mapped for books attribute in Author
+    @JsonIgnore
     private List<Author> authors;
 
     public Book(Long id, String title, String category, String genre, String ISBN, String editorial, Date publicationDate, List<Author> authors) {
