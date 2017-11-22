@@ -143,5 +143,10 @@ public class Book implements Serializable{
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }   
-    
+
+    @Override
+    public String toString() {
+        return "Book{" + "id=" + id + ", title=" + title + ", category=" + category + ", genre=" + genre + ", ISBN=" + ISBN + ", editorial=" + editorial + ", publicationDate=" + publicationDate + ", users=" + users + ", authors=" + authors + '}';
+    }
+       
 }
