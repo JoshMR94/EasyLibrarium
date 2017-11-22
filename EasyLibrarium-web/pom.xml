@@ -81,8 +81,7 @@
         </dependency>
         <!-- Test -->
         
-        <!-- JAX-RS y Jersey -->
-        
+        <!-- JAX-RS and Jersey -->
         
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
@@ -95,15 +94,61 @@
             <artifactId>jersey-container-servlet-core</artifactId>
             <version>2.17</version>
         </dependency>
-     
-        <!--
+        
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.23.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>2.25.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.6.0</version> 
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.6.3</version>
+        </dependency>  
+         
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.6.3</version>        
+        </dependency>
+        
+        <!-- En solitario funciona pero no mapea listas
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.9</version>
         </dependency>
         -->
-        <!-- JAX-RS y Jersey -->
+        <!-- JAX-RS and Jersey -->
+        
+        <!-- JSON Mapping with Gson -->
+                
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+
+        <!-- JSON Mapping with Gson -->
         
     </dependencies>
 

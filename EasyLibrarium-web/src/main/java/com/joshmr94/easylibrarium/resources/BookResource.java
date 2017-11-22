@@ -56,6 +56,7 @@ public class BookResource {
             for(int i = 0; i < list.size();  i++){
                 result.add(list.get(i));
             }
+            
             return Response.ok(result).build();
             
         } catch (NullPointerException ex) {
