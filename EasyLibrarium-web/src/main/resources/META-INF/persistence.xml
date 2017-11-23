@@ -2,22 +2,9 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="com.joshmr94_EasyLibrarium_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <!--
-    <class>com.inerza.hsr.solicitudhc.model.Solicitud</class>
-    <class>com.inerza.hsr.solicitudhc.model.Solicitante</class>
-    <class>com.inerza.hsr.solicitudhc.model.PruebaInforme</class>
-    <class>com.inerza.hsr.solicitudhc.model.Paciente</class>
-    <class>com.inerza.hsr.rbac.model.Rol</class>
-    <class>com.inerza.hsr.rbac.model.Recurso</class>
-    <class>com.inerza.hsr.rbac.model.Permiso</class>
-    <class>com.inerza.hsr.rbac.model.Operacion</class>
-    <class>com.inerza.hsr.comun.model.Usuario</class>
-    <class>com.inerza.hsr.comun.model.Provincia</class>
-    <class>com.inerza.hsr.comun.model.Pais</class>
-    <class>com.inerza.hsr.comun.model.Municipio</class>
-    <class>com.inerza.hsr.comun.model.Isla</class>
-    <class>com.inerza.hsr.comun.model.ComunidadAutonoma</class>
-    -->
+    <class>com.joshmr94.easylibrarium.model.Book</class>
+    <class>com.joshmr94.easylibrarium.model.Author</class>
+    <class>com.joshmr94.easylibrarium.model.LUser</class>
     <!--<exclude-unlisted-classes>false</exclude-unlisted-classes>-->
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/easylibrarium"/>

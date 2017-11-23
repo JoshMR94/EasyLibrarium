@@ -27,7 +27,7 @@ public class BookDao extends CommonSession<Book>{
     public long countBooks() {
         try {
             String queryString;
-            queryString = String.format("select count(book.id) from book", Book.class.getName());
+            queryString = String.format("select count(book.id) from " + Book.class.getName() + " book");
             Query query = getEntityManager().createQuery(queryString);
             return (long) query.getSingleResult();
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class BookDao extends CommonSession<Book>{
     public Book getBookById(Long id) {
         try {
             String queryString;
-            queryString = String.format("select * from book where book.id = :id", Book.class.getName());
+            queryString = String.format("select book from " + Book.class.getName() + " book where book.id = :id", Book.class.getName());
             Query query = getEntityManager().createQuery(queryString);
             query.setParameter("id", id);
             return (Book) query.getSingleResult();

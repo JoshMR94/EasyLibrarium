@@ -16,6 +16,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -24,7 +25,7 @@ import javax.ws.rs.core.Response;
  *
  * @author joshmr94
  */
-@Path("book")
+@Path("books")
 public class BookResource {
 
     @Context
@@ -35,16 +36,8 @@ public class BookResource {
      */
     public BookResource() {
     }
-
-    @GET
-    @Path("ejemplo")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
-        return "Correcto";
-    }
     
     @GET
-    @Path("books")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBooks(){
         EntityManager em = CommonSession.buildEntityManager();
@@ -68,4 +61,58 @@ public class BookResource {
             em.close();
         }
     }
+    
+    @GET
+    @Path("/count")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBooksCount(){
+        EntityManager em = CommonSession.buildEntityManager();
+        long result; 
+        try {
+            
+            BookDao bookDao = new BookDao(em);
+            result = bookDao.countBooks();
+            
+            return Response.ok(result).build();
+            
+        } catch (NullPointerException ex) {
+            
+            System.out.println("ERROR :: " + ex.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            
+        } finally {
+            em.close();
+        }
+    }
+    
+    @GET
+    @Path("/book/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBookById(@PathParam("id") Long id){
+        EntityManager em = CommonSession.buildEntityManager();
+        Book result = new Book();
+        try {
+            
+            BookDao bookDao = new BookDao(em);
+            result = bookDao.getBookById(id);
+            
+            return Response.ok(result).build();
+            
+        } catch (NullPointerException ex) {
+            
+            System.out.println("ERROR :: " + ex.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+            
+        } finally {
+            em.close();
+        }
+    }
+    
+    @GET
+    @Path("ejemplo")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJson() {
+        return "Correcto";
+    }
+    
 }
