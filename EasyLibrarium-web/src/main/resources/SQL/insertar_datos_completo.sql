@@ -28,5 +28,11 @@ INSERT INTO public.book(
 	VALUES (3, '9126790345670', 'Todos los públicos', 'Ediciones Minotauro', 'Novela fantástica épica', '01/01/1978', 'El Señor de los Anillos: La Comunidad del Anillo');
 
 /** Relacion LIBROS AUTORES **/
+INSERT INTO public.books_author(author_id, book_id)
+	VALUES (1, 1);
+INSERT INTO public.books_author(author_id, book_id)
+	VALUES (2, 2);
+INSERT INTO public.books_author(author_id, book_id)
+	VALUES (3, 3);
 
 /** Relacion LIBROS USUARIOS **/ 

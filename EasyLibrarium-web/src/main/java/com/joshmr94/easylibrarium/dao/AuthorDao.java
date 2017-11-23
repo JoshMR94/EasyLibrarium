@@ -1,6 +1,8 @@
 package com.joshmr94.easylibrarium.dao;
 
 import com.joshmr94.easylibrarium.model.Author;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -25,7 +27,7 @@ public class AuthorDao extends CommonSession<Author> {
     public long countAuthors() {
         try {
             String queryString;
-            queryString = String.format("select count(author.id) from author", Author.class.getName());
+            queryString = String.format("select count(author.id) from " + Author.class.getName() + " author");
             Query query = getEntityManager().createQuery(queryString);
             return (long) query.getSingleResult();
         } catch (Exception e) {
@@ -36,16 +38,31 @@ public class AuthorDao extends CommonSession<Author> {
         }
     }
     
-    public Author findAuthorById(Long id) {
+    public Author getAuthorById(Long id) {
         try {
             String queryString;
-            queryString = String.format("select * from author where author.id = :id", Author.class.getName());
+            //queryString = String.format("select * from author where author.id = :id", Author.class.getName());
+            queryString = String.format("select author from " + Author.class.getName() + " author where author.id = :id", Author.class.getName());
             Query query = getEntityManager().createQuery(queryString);
             query.setParameter("id", id);
             return (Author) query.getSingleResult();
         } catch (NoResultException e) {
             LOG.error("Error obtaining the author by id", e);
             return null;
+        } finally {
+            closeEntityManager();
+        }
+    }
+    
+    public List<Author> getAllAuthors() {
+        try {
+            String queryString;
+            queryString = String.format("select a from " + Author.class.getName() + " a");
+            Query query = getEntityManager().createQuery(queryString);
+            return (List<Author>) query.getResultList();
+        } catch (NoResultException e) {
+            LOG.error("Error obtaining all the authors", e);
+            return new ArrayList<>();
         } finally {
             closeEntityManager();
         }

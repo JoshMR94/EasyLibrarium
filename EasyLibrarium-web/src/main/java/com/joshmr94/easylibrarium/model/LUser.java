@@ -7,8 +7,10 @@ package com.joshmr94.easylibrarium.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +40,7 @@ public class LUser implements Serializable{
     @Column(name = "description", nullable = true, length = 255)
     private String description;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name="books_luser",
             joinColumns=@JoinColumn(name = "luser_id", referencedColumnName = "id"),
