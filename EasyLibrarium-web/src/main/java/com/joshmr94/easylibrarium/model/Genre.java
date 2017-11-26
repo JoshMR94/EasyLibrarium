@@ -24,38 +24,32 @@ import javax.persistence.Table;
  * @author joshmr94
  */
 @Entity
-@Table(name = "luser")
-public class LUser implements Serializable{
+@Table(name = "genre")
+public class Genre implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
     
-    @Column(name = "username", nullable = false, length = 255, unique = true)
-    private String username;
-    
-    @Column(name = "password", nullable = false, length = 255)
-    private String password;
-    
-    @Column(name = "description", nullable = true, length = 255)
-    private String description;
+    @Column(name = "name", nullable = false, length = 255)
+    private String name;
     
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name="books_luser",
-            joinColumns=@JoinColumn(name = "luser_id", referencedColumnName = "id"),
+            name="books_genre",
+            joinColumns=@JoinColumn(name = "genre_id", referencedColumnName = "id"),
             inverseJoinColumns =@JoinColumn(name="book_id", referencedColumnName = "id")
     )
     private List<Book> books;
 
-    public LUser(Long id, String username, String password, String description) {
+    public Genre(Long id, String name, List<Book> books) {
         this.id = id;
-        this.username = username;
-        this.password = password;
-        this.description = description;
+        this.name = name;
+        this.books = books;
     }
 
-    public LUser() {
+    public Genre() {
     }
 
     public Long getId() {
@@ -66,28 +60,12 @@ public class LUser implements Serializable{
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Book> getBooks() {
@@ -100,7 +78,7 @@ public class LUser implements Serializable{
 
     @Override
     public String toString() {
-        return "LUser{" + "id=" + id + ", username=" + username + ", password=" + password + ", description=" + description + ", books=" + books + '}';
+        return "Genre{" + "id=" + id + ", name=" + name + ", books=" + books + '}';
     }
-  
+    
 }

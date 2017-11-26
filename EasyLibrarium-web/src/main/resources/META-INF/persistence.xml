@@ -5,6 +5,7 @@
     <class>com.joshmr94.easylibrarium.model.Book</class>
     <class>com.joshmr94.easylibrarium.model.Author</class>
     <class>com.joshmr94.easylibrarium.model.LUser</class>
+    <class>com.joshmr94.easylibrarium.model.Genre</class>
     <!--<exclude-unlisted-classes>false</exclude-unlisted-classes>-->
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/easylibrarium"/>

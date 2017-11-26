@@ -18,7 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -35,12 +34,6 @@ public class Book implements Serializable{
     
     @Column(name = "title", nullable = false, length = 255)
     private String title;
-    
-    @Column(name = "category", nullable = false, length = 255)
-    private String category;
-    
-    @Column(name = "genre", nullable = false, length = 255)
-    private String genre;
     
     @Column(name = "ISBN", nullable = false, length = 255)
     private String ISBN;
@@ -59,16 +52,19 @@ public class Book implements Serializable{
     @ManyToMany(mappedBy = "books") //mapped for books attribute in Author
     @JsonIgnore
     private List<Author> authors;
+    
+    @ManyToMany(mappedBy = "books") //mapped for books attribute in Genre
+    @JsonIgnore
+    private List<Genre> genres;
 
-    public Book(Long id, String title, String category, String genre, String ISBN, String editorial, Date publicationDate, List<Author> authors) {
+    public Book(Long id, String title, String ISBN, String editorial, Date publicationDate, List<Author> authors, List<Genre> genres) {
         this.id = id;
         this.title = title;
-        this.category = category;
-        this.genre = genre;
         this.ISBN = ISBN;
         this.editorial = editorial;
         this.publicationDate = publicationDate;
         this.authors = authors;
+        this.genres = genres;
     }
 
     public Book() {
@@ -88,22 +84,6 @@ public class Book implements Serializable{
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getISBN() {
@@ -144,11 +124,21 @@ public class Book implements Serializable{
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
-    }   
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", category=" + category + ", genre=" + genre + ", ISBN=" + ISBN + ", editorial=" + editorial + ", publicationDate=" + publicationDate + ", users=" + users + ", authors=" + authors + '}';
+        return "Book{" + "id=" + id + ", title=" + title + ", ISBN=" + ISBN + ", editorial=" + editorial + ", publicationDate=" + publicationDate + ", users=" + users + ", authors=" + authors + ", genres=" + genres + '}';
     }
+    
+    
        
 }

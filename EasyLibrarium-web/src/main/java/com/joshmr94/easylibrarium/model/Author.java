@@ -109,6 +109,10 @@ public class Author implements Serializable {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Author{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", birthDate=" + birthDate + ", description=" + description + ", books=" + books + '}';
+    }
+
 }
