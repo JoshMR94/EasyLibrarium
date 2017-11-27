@@ -54,14 +54,22 @@ INSERT INTO public.author(
 /** LIBROS **/
 
 INSERT INTO public.book(
-	id, isbn, editorial, publication_date, title)
-	VALUES (1, '9780805511963', 'Juan de la Cuesta', '01/01/1605', 'Don Quijote de la Mancha');
+	id, isbn, editorial, publication_date, rate, title)
+	VALUES (1, '9780805511963', 'Juan de la Cuesta', '01/01/1605', 7, 'Don Quijote de la Mancha');
 INSERT INTO public.book(
-	id, isbn, editorial, publication_date, title)
-	VALUES (2, '9711232314556', 'Salamandra', '01/01/1998', 'Harry Potter y la Piedra Filosofal');
+	id, isbn, editorial, publication_date, rate, title)
+	VALUES (2, '9711232314556', 'Salamandra', '01/01/1998', 8, 'Harry Potter y la Piedra Filosofal');
 INSERT INTO public.book(
-	id, isbn, editorial, publication_date, title)
-	VALUES (3, '9126790345670', 'Ediciones Minotauro', '01/01/1978', 'El Señor de los Anillos: La Comunidad del Anillo');
+	id, isbn, editorial, publication_date, rate, title)
+	VALUES (3, '9126790345670', 'Ediciones Minotauro', '01/01/1978', 9, 'El Señor de los Anillos: La Comunidad del Anillo');
+
+/** USUARIOS **/
+INSERT INTO public.luser(
+	id, description, email, password, usertype, username)
+	VALUES (1, 'administrador del sistema easylibrarium', 'admin@easylibrarium.com', 'admin', 1, 'admin');
+INSERT INTO public.luser(
+	id, description, email, password, usertype, username)
+	VALUES (2, 'me gustan las cosas de leer y tal', 'joshua@gmail.com', 'joshua123', 2, 'joshuser');
 
 /** Relacion LIBROS AUTORES **/
 INSERT INTO public.books_author(author_id, book_id)

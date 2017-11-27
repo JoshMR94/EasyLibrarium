@@ -45,6 +45,9 @@ public class Book implements Serializable{
     @Column(name = "publication_date", nullable = true)
     private Date publicationDate;
     
+    @Column(name = "rate", nullable = true, length = 2)
+    private int rate;
+    
     @ManyToMany(mappedBy = "books") //mapped for books attribute in User
     @JsonIgnore
     private List<LUser> users;
@@ -57,17 +60,19 @@ public class Book implements Serializable{
     @JsonIgnore
     private List<Genre> genres;
 
-    public Book(Long id, String title, String ISBN, String editorial, Date publicationDate, List<Author> authors, List<Genre> genres) {
+    public Book() {
+    }
+
+    public Book(Long id, String title, String ISBN, String editorial, Date publicationDate, int rate, List<LUser> users, List<Author> authors, List<Genre> genres) {
         this.id = id;
         this.title = title;
         this.ISBN = ISBN;
         this.editorial = editorial;
         this.publicationDate = publicationDate;
+        this.rate = rate;
+        this.users = users;
         this.authors = authors;
         this.genres = genres;
-    }
-
-    public Book() {
     }
 
     public Long getId() {
@@ -110,6 +115,14 @@ public class Book implements Serializable{
         this.publicationDate = publicationDate;
     }
 
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
     public List<LUser> getUsers() {
         return users;
     }
@@ -136,9 +149,7 @@ public class Book implements Serializable{
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", ISBN=" + ISBN + ", editorial=" + editorial + ", publicationDate=" + publicationDate + ", users=" + users + ", authors=" + authors + ", genres=" + genres + '}';
-    }
-    
-    
-       
+        return "Book{" + "id=" + id + ", title=" + title + ", ISBN=" + ISBN + ", editorial=" + editorial + ", publicationDate=" + publicationDate + ", rate=" + rate + ", users=" + users + ", authors=" + authors + ", genres=" + genres + '}';
+    }  
+          
 }
