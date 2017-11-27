@@ -5,9 +5,9 @@
  */
 package com.joshmr94.easylibrarium.resources;
 
-import com.joshmr94.easylibrarium.dao.BookDao;
 import com.joshmr94.easylibrarium.dao.CommonSession;
 import com.joshmr94.easylibrarium.model.Book;
+import com.joshmr94.easylibrarium.service.BookService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -40,25 +40,19 @@ public class BookResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBooks(){
-        EntityManager em = CommonSession.buildEntityManager();
         ArrayList<Book> result = new ArrayList<>();
         try {
             
-            BookDao bookDao = new BookDao(em);
-            List<Book> list = bookDao.getAllBooks();
+            BookService bookService = new BookService();
+            List<Book> list = bookService.getAllBooks();
             for(int i = 0; i < list.size();  i++){
                 result.add(list.get(i));
             }
             
             return Response.ok(result).build();
             
-        } catch (NullPointerException ex) {
-            
-            System.out.println("ERROR :: " + ex.getMessage());
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-            
-        } finally {
-            em.close();
+        } catch (NullPointerException ex) { 
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();      
         }
     }
     
@@ -66,22 +60,16 @@ public class BookResource {
     @Path("/count")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBooksCount(){
-        EntityManager em = CommonSession.buildEntityManager();
         long result; 
         try {
             
-            BookDao bookDao = new BookDao(em);
-            result = bookDao.countBooks();
+            BookService bookService = new BookService();
+            result = bookService.countBooks();
             
             return Response.ok(result).build();
             
-        } catch (NullPointerException ex) {
-            
-            System.out.println("ERROR :: " + ex.getMessage());
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-            
-        } finally {
-            em.close();
+        } catch (NullPointerException ex) { 
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();   
         }
     }
     
@@ -89,22 +77,16 @@ public class BookResource {
     @Path("/book/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBookById(@PathParam("id") Long id){
-        EntityManager em = CommonSession.buildEntityManager();
         Book result = new Book();
         try {
             
-            BookDao bookDao = new BookDao(em);
-            result = bookDao.getBookById(id);
+            BookService bookService = new BookService();
+            result = bookService.getBookById(id);
             
             return Response.ok(result).build();
             
         } catch (NullPointerException ex) {
-            
-            System.out.println("ERROR :: " + ex.getMessage());
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-            
-        } finally {
-            em.close();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();   
         }
     }
     

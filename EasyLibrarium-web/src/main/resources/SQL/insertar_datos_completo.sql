@@ -3,6 +3,42 @@
  * Created: 29-jun-2017
  */
 
+/** GENEROS **/
+
+INSERT INTO public.genre(
+	id, name)
+	VALUES (1, 'Comedia');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (2, 'Drama');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (3, 'Horror');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (4, 'Realismo Literario');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (5, 'Novela Romántica');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (6, 'Sátira');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (7, 'Tragedia');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (8, 'Tragicomedia');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (9, 'Fantasía');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (10, 'Mitología');
+INSERT INTO public.genre(
+	id, name)
+	VALUES (11, 'Novela');
+
 /** AUTORES **/
 INSERT INTO public.author(
 	id, birth_date, description, name, surname)
@@ -18,14 +54,14 @@ INSERT INTO public.author(
 /** LIBROS **/
 
 INSERT INTO public.book(
-	id, isbn, category, editorial, genre, publication_date, title)
-	VALUES (1, '9780805511963', 'Todos los públicos', 'Juan de la Cuesta', 'Novela', '01/01/1605', 'Don Quijote de la Mancha');
+	id, isbn, editorial, publication_date, title)
+	VALUES (1, '9780805511963', 'Juan de la Cuesta', '01/01/1605', 'Don Quijote de la Mancha');
 INSERT INTO public.book(
-	id, isbn, category, editorial, genre, publication_date, title)
-	VALUES (2, '9711232314556', 'Todos los públicos', 'Salamandra', 'Novela fantástica', '01/01/1998', 'Harry Potter y la Piedra Filosofal');
+	id, isbn, editorial, publication_date, title)
+	VALUES (2, '9711232314556', 'Salamandra', '01/01/1998', 'Harry Potter y la Piedra Filosofal');
 INSERT INTO public.book(
-	id, isbn, category, editorial, genre, publication_date, title)
-	VALUES (3, '9126790345670', 'Todos los públicos', 'Ediciones Minotauro', 'Novela fantástica épica', '01/01/1978', 'El Señor de los Anillos: La Comunidad del Anillo');
+	id, isbn, editorial, publication_date, title)
+	VALUES (3, '9126790345670', 'Ediciones Minotauro', '01/01/1978', 'El Señor de los Anillos: La Comunidad del Anillo');
 
 /** Relacion LIBROS AUTORES **/
 INSERT INTO public.books_author(author_id, book_id)
@@ -35,4 +71,13 @@ INSERT INTO public.books_author(author_id, book_id)
 INSERT INTO public.books_author(author_id, book_id)
 	VALUES (3, 3);
 
-/** Relacion LIBROS USUARIOS **/ 
+/** Relacion LIBROS GENEROS **/ 
+INSERT INTO public.books_genre(
+	genre_id, book_id)
+	VALUES (11, 1);
+INSERT INTO public.books_genre(
+	genre_id, book_id)
+	VALUES (9, 2);
+INSERT INTO public.books_genre(
+	genre_id, book_id)
+	VALUES (9, 3);
