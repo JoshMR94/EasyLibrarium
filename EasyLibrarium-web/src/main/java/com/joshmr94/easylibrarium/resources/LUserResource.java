@@ -5,69 +5,64 @@
  */
 package com.joshmr94.easylibrarium.resources;
 
-import com.joshmr94.easylibrarium.dao.AuthorDao;
-import com.joshmr94.easylibrarium.dao.CommonSession;
-import com.joshmr94.easylibrarium.model.Author;
-import com.joshmr94.easylibrarium.service.AuthorService;
+import com.joshmr94.easylibrarium.model.LUser;
+import com.joshmr94.easylibrarium.service.LUserService;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
+import javax.ws.rs.GET;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
-import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
  *
- * @author joshmr94
+ * @author AlumnoTarde
  */
-@Path("authors")
-public class AuthorResource {
+@Path("users")
+public class LUserResource {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of AuthorResource
+     * Creates a new instance of LUserResource
      */
-    public AuthorResource() {
+    public LUserResource() {
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAuthors(){
-        ArrayList<Author> result = new ArrayList<>();
+    public Response getUsers(){
+        ArrayList<LUser> result = new ArrayList<>();
         try {
             
-            AuthorService authorService = new AuthorService();
-            List<Author> list = authorService.getAllAuthors();
+            LUserService luserService = new LUserService();
+            List<LUser> list = luserService.getAllLUsers();
             for(int i = 0; i < list.size();  i++){
                 result.add(list.get(i));
             }
             
             return Response.ok(result).build();
             
-        } catch (NullPointerException ex) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();  
-        } 
+        } catch (NullPointerException ex) { 
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();      
+        }
     }
     
     @GET
     @Path("/count")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getBooksCount(){
+    public Response getUsersCount(){
         long result; 
         try {
             
-            AuthorService authorService = new AuthorService();
-            result = authorService.countAuthors();
+            LUserService luserService = new LUserService();
+            result = luserService.countLUsers();
             
             return Response.ok(result).build();
             
@@ -77,14 +72,14 @@ public class AuthorResource {
     }
     
     @GET
-    @Path("/author/{id}")
+    @Path("/user/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBookById(@PathParam("id") Long id){
-        Author result = new Author();
+        LUser result = new LUser();
         try {
             
-            AuthorService authorService = new AuthorService();
-            result = authorService.getAuthorById(id);
+            LUserService luserService = new LUserService();
+            result = luserService.getLUserById(id);
             
             return Response.ok(result).build();
             

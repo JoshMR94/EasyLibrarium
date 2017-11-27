@@ -5,12 +5,10 @@
  */
 package com.joshmr94.easylibrarium.resources;
 
-import com.joshmr94.easylibrarium.dao.CommonSession;
 import com.joshmr94.easylibrarium.model.Book;
 import com.joshmr94.easylibrarium.service.BookService;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -90,11 +88,12 @@ public class BookResource {
         }
     }
     
+    /*
     @GET
     @Path("ejemplo")
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() {
         return "Correcto";
     }
-    
+    */
 }

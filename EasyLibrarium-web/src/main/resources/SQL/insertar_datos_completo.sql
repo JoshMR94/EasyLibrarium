@@ -66,10 +66,10 @@ INSERT INTO public.book(
 /** USUARIOS **/
 INSERT INTO public.luser(
 	id, description, email, password, usertype, username)
-	VALUES (1, 'administrador del sistema easylibrarium', 'admin@easylibrarium.com', 'admin', 1, 'admin');
+	VALUES (1, 'administrador del sistema easylibrarium', 'admin@easylibrarium.com', 'admin', 0, 'admin');
 INSERT INTO public.luser(
 	id, description, email, password, usertype, username)
-	VALUES (2, 'me gustan las cosas de leer y tal', 'joshua@gmail.com', 'joshua123', 2, 'joshuser');
+	VALUES (2, 'me gustan las cosas de leer y tal', 'joshua@gmail.com', 'joshua123', 1, 'joshuser');
 
 /** Relacion LIBROS AUTORES **/
 INSERT INTO public.books_author(author_id, book_id)
