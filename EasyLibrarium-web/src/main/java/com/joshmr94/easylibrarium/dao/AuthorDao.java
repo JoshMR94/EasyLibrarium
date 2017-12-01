@@ -68,4 +68,23 @@ public class AuthorDao extends CommonSession<Author> {
         }
     }
     
+    public boolean updateAuthor(Author a) {
+        try {
+            String queryString;
+            queryString = String.format("update " + Author.class.getName() + " a set "
+                    + "a.description= " + a.getDescription() + ", "
+                    + "a.name= " + a.getName() + ", "
+                    + "a.surname= " + a.getSurname()
+                    + "where a.id= " + a.getId());
+            Query query = getEntityManager().createQuery(queryString);
+            query.executeUpdate();
+            commitTransaction();
+            return true;
+        } catch (NoResultException e) {
+            LOG.error("Error updating the author", e);
+            return false;
+        } finally {
+            closeEntityManager();
+        }
+    }     
 }
