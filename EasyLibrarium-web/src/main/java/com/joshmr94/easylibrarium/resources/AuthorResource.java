@@ -62,7 +62,7 @@ public class AuthorResource {
     @GET
     @Path("/count")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getBooksCount(){
+    public Response getAuthorsCount(){
         long result; 
         try {
             
@@ -79,12 +79,39 @@ public class AuthorResource {
     @GET
     @Path("/author/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getBookById(@PathParam("id") Long id){
+    public Response getAuthorById(@PathParam("id") Long id){
         Author result = new Author();
         try {
             
             AuthorService authorService = new AuthorService();
             result = authorService.getAuthorById(id);
+            
+            return Response.ok(result).build();
+            
+        } catch (NullPointerException ex) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();   
+        }
+    }
+    
+    @PUT
+    @Path("/author/{id}/update")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateAuthor(@PathParam("id") Long id, Author author){
+        Author authorById = new Author();
+        Boolean result = false;
+        try {
+            
+            AuthorService authorByIdService = new AuthorService();
+            authorById = authorByIdService.getAuthorById(id);
+            
+            authorById.setBirthDate(author.getBirthDate());
+            authorById.setDescription(author.getDescription());
+            authorById.setName(author.getName());
+            authorById.setSurname(author.getSurname());
+            authorById.setBooks(author.getBooks());
+            
+            AuthorService authorService = new AuthorService();
+            result = authorService.updateAuthor(authorById);
             
             return Response.ok(result).build();
             

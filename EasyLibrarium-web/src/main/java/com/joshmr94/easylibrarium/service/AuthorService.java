@@ -71,4 +71,21 @@ public class AuthorService {
         }   
     }
     
+    public boolean updateAuthor(Author a) {
+        EntityManager em = CommonSession.buildEntityManager();
+        try {
+            System.out.println("updateAuthorService entra");
+            AuthorDao authorDao = new AuthorDao(em);
+            Boolean result = authorDao.updateAuthor(a);
+            System.out.println("updateAuthorService sale");
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            System.out.println("ERROR :: " + ex.getMessage());  
+            return false;
+        } finally {
+            em.close();
+        } 
+    } 
+    
 }
