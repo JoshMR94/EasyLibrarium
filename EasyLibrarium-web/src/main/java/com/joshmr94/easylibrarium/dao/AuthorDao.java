@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import org.apache.log4j.Logger;
 
 /**
@@ -69,22 +70,31 @@ public class AuthorDao extends CommonSession<Author> {
     }
     
     public boolean updateAuthor(Author a) {
+        beginTransaction();
         try {
-            System.out.println("updateAuthorDao entra");
             String queryString;
-            queryString = String.format("update " + Author.class.getName() + " author set "
-                    + "author.description = " + a.getDescription() + ", "
-                    + "author.name = " + a.getName() + ", "
-                    + "author.surname = " + a.getSurname() + ", "
-                    + "where author.id = " + a.getId());
-            System.out.println("updateAuthorDao post query");
+            /*queryString = String.format("update " + Author.class.getName() + " author set "
+                    + "author.description = " + a.getDescription()
+                    + ", author.name = " + a.getName()
+                    + ", author.surname = " + a.getSurname()
+                    + ", where author.id = " + a.getId());
+            Query query = getEntityManager().createQuery(queryString);*/
+            queryString = "update " + Author.class.getName() + " a SET a.description = :description" + 
+                  ", a.name = :name" +  
+                  ", a.surname = :surname" + 
+                  " WHERE id = " + a.getId();
             Query query = getEntityManager().createQuery(queryString);
-            System.out.println("updateAuthorDao pre execute update");
+            query.setParameter("description", a.getDescription());
+            query.setParameter("name", a.getName());
+            query.setParameter("surname", a.getSurname());
+            System.out.println("ejecuta update");
             query.executeUpdate();
+            System.out.println("comita update");
             commitTransaction();
             return true;
         } catch (NoResultException e) {
-            LOG.error("Error updating the author", e);
+            rollbackTransaction();
+            LOG.error("Error updating the author", e); 
             return false;
         } finally {
             closeEntityManager();
