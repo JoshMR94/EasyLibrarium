@@ -15,8 +15,10 @@ import javax.persistence.EntityManager;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
@@ -93,9 +95,28 @@ public class AuthorResource {
         }
     }
     
+    @POST
+    @Path("/author/insert")  //insert authors with no books. Error if we have any books attached
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response insertAuthor(Author author){
+        Author result;
+        try {
+            
+            AuthorService authorService = new AuthorService();
+            result = authorService.insertAuthor(author);
+            
+            return Response.ok(result).build();
+            
+        } catch (NullPointerException ex) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();   
+        }
+    }
+    
     @PUT
     @Path("/author/{id}/update")
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response updateAuthor(@PathParam("id") Long id, Author author){
         Author authorById = new Author();
         Boolean result = false;
@@ -112,6 +133,23 @@ public class AuthorResource {
             
             AuthorService authorService = new AuthorService();
             result = authorService.updateAuthor(authorById);
+            
+            return Response.ok(result).build();
+            
+        } catch (NullPointerException ex) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();   
+        }
+    }
+    
+    @DELETE
+    @Path("/author/{id}/delete")  //delete authors and their relation with books
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteAuthor(@PathParam("id") Long id){
+        Boolean result = false;
+        try {
+            
+            AuthorService authorService = new AuthorService();
+            result = authorService.deleteAuthor(id);
             
             return Response.ok(result).build();
             

@@ -69,27 +69,38 @@ public class AuthorDao extends CommonSession<Author> {
         }
     }
     
+    public Author insertAuthor(Author a){
+        beginTransaction();
+        try {
+            getEntityManager().persist(a);
+            commitTransaction();
+            return a;
+        } catch (NoResultException e) {
+            rollbackTransaction();
+            LOG.error("Error inserting the author", e); 
+            return null;
+        } finally {
+            closeEntityManager();
+        }
+    }
+    
     public boolean updateAuthor(Author a) {
         beginTransaction();
         try {
             String queryString;
-            /*queryString = String.format("update " + Author.class.getName() + " author set "
-                    + "author.description = " + a.getDescription()
-                    + ", author.name = " + a.getName()
-                    + ", author.surname = " + a.getSurname()
-                    + ", where author.id = " + a.getId());
-            Query query = getEntityManager().createQuery(queryString);*/
             queryString = "update " + Author.class.getName() + " a SET a.description = :description" + 
                   ", a.name = :name" +  
-                  ", a.surname = :surname" + 
+                  ", a.surname = :surname" +
+                  ", a.birthDate = :birthDate" + 
                   " WHERE id = " + a.getId();
+            
             Query query = getEntityManager().createQuery(queryString);
             query.setParameter("description", a.getDescription());
             query.setParameter("name", a.getName());
             query.setParameter("surname", a.getSurname());
-            System.out.println("ejecuta update");
+            query.setParameter("birthDate", a.getBirthDate());
+            
             query.executeUpdate();
-            System.out.println("comita update");
             commitTransaction();
             return true;
         } catch (NoResultException e) {
@@ -99,5 +110,21 @@ public class AuthorDao extends CommonSession<Author> {
         } finally {
             closeEntityManager();
         }
-    }     
+    }
+    
+    public boolean deleteAuthor(Long id) {
+        beginTransaction();
+        try {
+            Query query = getEntityManager().createQuery("DELETE FROM " + Author.class.getName() + " author WHERE author.id = " + id);
+            query.executeUpdate();
+            commitTransaction();
+            return true;
+        } catch (NoResultException e) {
+            rollbackTransaction();
+            LOG.error("Error deleting the author", e); 
+            return false;
+        } finally {
+            closeEntityManager();
+        }
+    }
 }

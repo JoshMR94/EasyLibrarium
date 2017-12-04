@@ -71,12 +71,52 @@ public class AuthorService {
         }   
     }
     
+    public Author insertAuthor(Author a){
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            AuthorDao authorDao = new AuthorDao(em);
+            Author result = authorDao.insertAuthor(a);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return null;
+        } finally {
+            em.close();
+        } 
+    }
+    
     public boolean updateAuthor(Author a) {
         EntityManager em = CommonSession.buildEntityManager();
         em.getTransaction().begin();
         try {
             AuthorDao authorDao = new AuthorDao(em);
             Boolean result = authorDao.updateAuthor(a);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return false;
+        } finally {
+            em.close();
+        } 
+    }
+    
+    public boolean deleteAuthor(Long id) {
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            AuthorDao authorDao = new AuthorDao(em);
+            Boolean result = authorDao.deleteAuthor(id);
             em.getTransaction().commit();
             return result;
             
