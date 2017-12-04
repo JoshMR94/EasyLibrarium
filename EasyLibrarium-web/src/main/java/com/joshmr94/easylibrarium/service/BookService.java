@@ -71,5 +71,65 @@ public class BookService {
         }   
     }
     
+    public Book insertBook(Book b){
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            BookDao bookDao = new BookDao(em);
+            Book result = bookDao.insertBook(b);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return null;
+        } finally {
+            em.close();
+        } 
+    }
+    
+    public boolean updateBook(Book b) {
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            BookDao bookDao = new BookDao(em);
+            Boolean result = bookDao.updateBook(b);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return false;
+        } finally {
+            em.close();
+        } 
+    }
+    
+    public boolean deleteBook(Long id) {
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            BookDao bookDao = new BookDao(em);
+            Boolean result = bookDao.deleteBook(id);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return false;
+        } finally {
+            em.close();
+        } 
+    }
+    
     
 }

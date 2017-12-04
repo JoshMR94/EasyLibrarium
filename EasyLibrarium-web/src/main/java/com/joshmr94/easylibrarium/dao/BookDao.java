@@ -67,4 +67,65 @@ public class BookDao extends CommonSession<Book>{
         }
     }
     
+    public Book insertBook(Book b){
+        beginTransaction();
+        try {
+            getEntityManager().persist(b);
+            commitTransaction();
+            return b;
+        } catch (NoResultException e) {
+            rollbackTransaction();
+            LOG.error("Error inserting the book", e); 
+            return null;
+        } finally {
+            closeEntityManager();
+        }
+    }
+    
+    public boolean updateBook(Book b) {
+        beginTransaction();
+        try {
+            String queryString;
+            queryString = "update " + Book.class.getName() + " b SET b.ISBN = :isbn" + 
+                  ", b.editorial = :editorial" +  
+                  ", b.publicationDate = :publicationDate" +
+                  ", b.rate = :rate" + 
+                  ", b.title = :title" + 
+                  " WHERE id = " + b.getId();
+            
+            Query query = getEntityManager().createQuery(queryString);
+            query.setParameter("isbn", b.getISBN());
+            query.setParameter("editorial", b.getEditorial());
+            query.setParameter("publicationDate", b.getPublicationDate());
+            query.setParameter("rate", b.getRate());
+            query.setParameter("title", b.getTitle());
+            
+            query.executeUpdate();
+            commitTransaction();
+            return true;
+        } catch (NoResultException e) {
+            rollbackTransaction();
+            LOG.error("Error updating the book", e); 
+            return false;
+        } finally {
+            closeEntityManager();
+        }
+    }
+    
+    public boolean deleteBook(Long id) {
+        beginTransaction();
+        try {
+            Query query = getEntityManager().createQuery("DELETE FROM " + Book.class.getName() + " book WHERE book.id = " + id);
+            query.executeUpdate();
+            commitTransaction();
+            return true;
+        } catch (NoResultException e) {
+            rollbackTransaction();
+            LOG.error("Error deleting the book", e); 
+            return false;
+        } finally {
+            closeEntityManager();
+        }
+    }
+    
 }
