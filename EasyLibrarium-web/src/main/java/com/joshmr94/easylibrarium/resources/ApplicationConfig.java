@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.joshmr94.easylibrarium.resources.AuthorResource.class);
         resources.add(com.joshmr94.easylibrarium.resources.BookResource.class);
+        resources.add(com.joshmr94.easylibrarium.resources.GenreResource.class);
         resources.add(com.joshmr94.easylibrarium.resources.LUserResource.class);
     }
     
