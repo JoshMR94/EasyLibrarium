@@ -70,4 +70,64 @@ public class LUserService {
             em.close();
         }   
     }
+    
+    public LUser insertLUser(LUser u){
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            LUserDao luserDao = new LUserDao(em);
+            LUser result = luserDao.insertLUser(u);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return null;
+        } finally {
+            em.close();
+        } 
+    }
+    
+    public boolean updateLUser(LUser u) {
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            LUserDao luserDao = new LUserDao(em);
+            Boolean result = luserDao.updateLUser(u);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return false;
+        } finally {
+            em.close();
+        } 
+    }
+    
+    public boolean deleteLUser(Long id) {
+        EntityManager em = CommonSession.buildEntityManager();
+        em.getTransaction().begin();
+        try {
+            LUserDao luserDao = new LUserDao(em);
+            Boolean result = luserDao.deleteLUser(id);
+            em.getTransaction().commit();
+            return result;
+            
+        } catch (NullPointerException ex) {           
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+                System.out.println("ERROR :: " + ex.getMessage());
+            }
+            return false;
+        } finally {
+            em.close();
+        } 
+    }
 }

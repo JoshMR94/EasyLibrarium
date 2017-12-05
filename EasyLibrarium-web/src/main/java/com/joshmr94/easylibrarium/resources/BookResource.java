@@ -114,7 +114,7 @@ public class BookResource {
     @Path("/book/{id}/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateAuthor(@PathParam("id") Long id, Book book){
+    public Response updateBook(@PathParam("id") Long id, Book book){
         Book bookById = new Book();
         Boolean result = false;
         try {
@@ -142,7 +142,7 @@ public class BookResource {
     @DELETE
     @Path("/book/{id}/delete")  //delete books (with no relations)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteAuthor(@PathParam("id") Long id){
+    public Response deleteBook(@PathParam("id") Long id){
         Boolean result = false;
         try {
             
