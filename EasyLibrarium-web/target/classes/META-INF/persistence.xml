@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.joshmr94_EasyLibrarium_PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.joshmr94.easylibrarium.model.Book</class>
+    <class>com.joshmr94.easylibrarium.model.Author</class>
+    <class>com.joshmr94.easylibrarium.model.LUser</class>
+    <class>com.joshmr94.easylibrarium.model.Genre</class>
+    <!--<exclude-unlisted-classes>false</exclude-unlisted-classes>-->
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/easylibrarium"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="joshua"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <!--<property name="javax.persistence.schema-generation.database.action" value="create"/>-->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.use_sql_comments" value="false"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <!--<prop key="hibernate.hbm2ddl.auto">update</prop>  ¿esto va aqui? --> 
+    </properties>
+  </persistence-unit>
+</persistence>

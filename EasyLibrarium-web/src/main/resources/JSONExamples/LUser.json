@@ -1,0 +1,18 @@
+{  
+   "id":1,
+   "username":"admin",
+   "password":"admin",
+   "description":"administrador del sistema easylibrarium",
+   "email":"admin@easylibrarium.com",
+   "userType":"ADMIN",
+   "books":[  
+      {  
+         "id":1,
+         "title":"Don Quijote de la Mancha",
+         "editorial":"Juan de la Cuesta",
+         "publicationDate":-11518243200000,
+         "rate":7,
+         "isbn":"9780805511963"
+      }
+   ]
+}
