@@ -1,0 +1,17 @@
+{  
+   "id":1,
+   "name":"Miguelisisisisimo",
+   "surname":"du Cervantes du Saavedrax",
+   "birthDate":-13324348800000,
+   "description":"Está considerado la máxima figura de la literatura española y es universalmente conocido por haber escrito El ingenioso Hidalgo don Quijote de la Mancha (conocida habitualmente como el Quijote)",
+   "books":[  
+      {  
+         "id":1,
+         "title":"Don Quijote de la Mancha",
+         "editorial":"Juan de la Cuesta",
+         "publicationDate":-11518243200000,
+         "rate":7,
+         "isbn":"9780805511963"
+      }
+   ]
+}

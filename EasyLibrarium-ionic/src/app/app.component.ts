@@ -3,6 +3,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { LoginPage } from '../pages/login/login';
+import { NoticiasPage } from '../pages/noticias/noticias';
+import { MisLibrosPage } from '../pages/mis-libros/mis-libros';
+import { MisAutoresPage } from '../pages/mis-autores/mis-autores';
+import { MiCuentaPage } from '../pages/mi-cuenta/mi-cuenta';
+import { AdministracionPage } from '../pages/administracion/administracion';
+
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,6 +36,11 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Login', component: LoginPage },
+      { title: 'Noticias', component: NoticiasPage },
+      { title: 'Mis Libros', component: MisLibrosPage },
+      { title: 'Mis Autores', component: MisAutoresPage },
+      { title: 'Mi Cuenta', component: MiCuentaPage},
+      { title: 'Administracion', component: AdministracionPage},
       { title: 'My First List', component: ListPage }
     ];
   }

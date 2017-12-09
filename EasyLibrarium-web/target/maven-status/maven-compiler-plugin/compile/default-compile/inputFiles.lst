@@ -4,6 +4,9 @@ C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\
 C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\service\LUserService.java
 C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\dao\CommonSession.java
 C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\resources\LUserResource.java
+C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\resources\GenreResource.java
+C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\dao\GenreDao.java
+C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\service\GenreService.java
 C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\model\Author.java
 C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\service\AuthorService.java
 C:\src\EasyLibrarium\EasyLibrarium-web\src\main\java\com\joshmr94\easylibrarium\resources\BookResource.java
