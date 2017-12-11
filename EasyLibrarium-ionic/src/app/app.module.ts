@@ -8,7 +8,11 @@ import { NoticiasPage } from '../pages/noticias/noticias';
 import { MisLibrosPage } from '../pages/mis-libros/mis-libros';
 import { MisAutoresPage } from '../pages/mis-autores/mis-autores';
 import { MiCuentaPage } from '../pages/mi-cuenta/mi-cuenta';
-import { AdministracionPage } from '../pages/administracion/administracion'
+import { AdministracionPage } from '../pages/administracion/administracion';
+import { AdministrarLibrosPage } from '../pages/administracion/administrar-libros/administrar-libros';
+import { AdministrarAutoresPage } from '../pages/administracion/administrar-autores/administrar-autores';
+import { AdministrarUsuariosPage } from '../pages/administracion/administrar-usuarios/administrar-usuarios';
+import { AdministrarGenerosPage } from '../pages/administracion/administrar-generos/administrar-generos';
 
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
@@ -25,6 +29,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MisAutoresPage,
     MiCuentaPage,
     AdministracionPage,
+    AdministrarLibrosPage,
+    AdministrarAutoresPage,
+    AdministrarUsuariosPage,
+    AdministrarGenerosPage,
     ItemDetailsPage,
     ListPage
   ],
@@ -41,6 +49,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MisAutoresPage,
     MiCuentaPage,
     AdministracionPage,
+    AdministrarLibrosPage,
+    AdministrarAutoresPage,
+    AdministrarUsuariosPage,
+    AdministrarGenerosPage,
     ItemDetailsPage,
     ListPage
   ],
