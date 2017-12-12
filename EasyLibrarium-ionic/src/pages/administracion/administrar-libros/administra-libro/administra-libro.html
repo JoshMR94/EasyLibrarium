@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EasyLibrarium</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>Administra Libro: {{book.title}}</h3>
+
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Título:</ion-label>
+      <ion-input placeholder="{{book.title}}" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">ISBN:</ion-label>
+      <ion-input placeholder="{{book.isbn}}" [(ngModel)]="isbn"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Editorial:</ion-label>
+      <ion-input placeholder="{{book.editorial}}" [(ngModel)]="editorial"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Fecha de Publicacion:</ion-label>
+      <ion-input placeholder="{{book.publicationDate}}" [(ngModel)]="publicationDate"></ion-input>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

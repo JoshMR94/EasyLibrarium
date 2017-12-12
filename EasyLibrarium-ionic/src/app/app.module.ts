@@ -11,6 +11,7 @@ import { MisAutoresPage } from '../pages/mis-autores/mis-autores';
 import { MiCuentaPage } from '../pages/mi-cuenta/mi-cuenta';
 import { AdministracionPage } from '../pages/administracion/administracion';
 import { AdministrarLibrosPage } from '../pages/administracion/administrar-libros/administrar-libros';
+import { AdministraLibroPage } from '../pages/administracion/administrar-libros/administra-libro/administra-libro';
 import { AdministrarAutoresPage } from '../pages/administracion/administrar-autores/administrar-autores';
 import { AdministrarUsuariosPage } from '../pages/administracion/administrar-usuarios/administrar-usuarios';
 import { AdministrarGenerosPage } from '../pages/administracion/administrar-generos/administrar-generos';
@@ -32,6 +33,7 @@ import { AdministrarLibrosProvider } from '../providers/administrar-libros/admin
     MiCuentaPage,
     AdministracionPage,
     AdministrarLibrosPage,
+    AdministraLibroPage,
     AdministrarAutoresPage,
     AdministrarUsuariosPage,
     AdministrarGenerosPage,
@@ -53,6 +55,7 @@ import { AdministrarLibrosProvider } from '../providers/administrar-libros/admin
     MiCuentaPage,
     AdministracionPage,
     AdministrarLibrosPage,
+    AdministraLibroPage,
     AdministrarAutoresPage,
     AdministrarUsuariosPage,
     AdministrarGenerosPage,
