@@ -130,4 +130,21 @@ public class LUserService {
             em.close();
         } 
     }
+    
+    public LUser getLUserCredentials(String username, String password){
+        EntityManager em = CommonSession.buildEntityManager();
+        try {
+            
+            LUserDao luserDao = new LUserDao(em);
+            LUser result = luserDao.getLUserCredentials(username, password);
+            
+            return result;
+            
+        } catch (NullPointerException ex) {
+            System.out.println("ERROR :: " + ex.getMessage());
+            return null;  
+        } finally {
+            em.close();
+        }
+    }
 }

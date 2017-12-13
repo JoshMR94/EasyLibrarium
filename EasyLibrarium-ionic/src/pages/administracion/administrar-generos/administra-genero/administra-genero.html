@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EasyLibrarium</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>Administra Genero: {{genre.name}}</h3>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Nombre del Género:</ion-label>
+      <ion-input placeholder="{{genre.name}}" [(ngModel)]="genre.name"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full (click)="updateUser(user.id, user)">Modificar Género</button>
+  <br/>
+  <button ion-button full color="danger" (click)="deleteUser(user.id)">Eliminar Género</button>
+
+</ion-content>

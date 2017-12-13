@@ -40,8 +40,8 @@ export class MyApp {
       { title: 'Mis Libros', component: MisLibrosPage },
       { title: 'Mis Autores', component: MisAutoresPage },
       { title: 'Mi Cuenta', component: MiCuentaPage},
-      { title: 'Administracion', component: AdministracionPage},
-      { title: 'My First List', component: ListPage }
+      { title: 'Administracion', component: AdministracionPage}
+      //{ title: 'My First List', component: ListPage }
     ];
   }
 

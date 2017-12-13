@@ -12,5 +12,11 @@
 
   
   <h3>Administrar Usuarios</h3>
+
+  <ion-list>
+    <button ion-item *ngFor="let user of users" (click)="administraUsuario($event, user)">
+      {{user.username}}
+    </button>
+  </ion-list>
   
 </ion-content>

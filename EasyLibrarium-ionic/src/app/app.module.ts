@@ -15,17 +15,25 @@ import { AdministraLibroPage } from '../pages/administracion/administrar-libros/
 import { AdministrarAutoresPage } from '../pages/administracion/administrar-autores/administrar-autores';
 import { AdministraAutorPage } from '../pages/administracion/administrar-autores/administra-autor/administra-autor';
 import { AdministrarUsuariosPage } from '../pages/administracion/administrar-usuarios/administrar-usuarios';
+import { AdministraUsuarioPage} from '../pages/administracion/administrar-usuarios/administra-usuario/administra-usuario';
 import { AdministrarGenerosPage } from '../pages/administracion/administrar-generos/administrar-generos';
+import { AdministraGeneroPage } from '../pages/administracion/administrar-generos/administra-genero/administra-genero';
 
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { AdministrarLibrosProvider } from '../providers/administrar-libros/administrar-libros';
 import { AdministraLibroProvider } from '../providers/administra-libro/administra-libro';
 import { AdministrarAutoresProvider } from '../providers/administrar-autores/administrar-autores';
 import { AdministraAutorProvider } from '../providers/administra-autor/administra-autor';
+import { AdministrarUsuariosProvider } from '../providers/administrar-usuarios/administrar-usuarios';
+import { AdministraUsuarioProvider } from '../providers/administra-usuario/administra-usuario';
+import { AdministrarGenerosProvider } from '../providers/administrar-generos/administrar-generos';
+import { AdministraGeneroProvider } from '../providers/administra-genero/administra-genero';
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
   declarations: [
@@ -41,7 +49,9 @@ import { AdministraAutorProvider } from '../providers/administra-autor/administr
     AdministrarAutoresPage,
     AdministraAutorPage,
     AdministrarUsuariosPage,
+    AdministraUsuarioPage,
     AdministrarGenerosPage,
+    AdministraGeneroPage,
     ItemDetailsPage,
     ListPage
   ],
@@ -64,7 +74,9 @@ import { AdministraAutorProvider } from '../providers/administra-autor/administr
     AdministrarAutoresPage,
     AdministraAutorPage,
     AdministrarUsuariosPage,
+    AdministraUsuarioPage,
     AdministrarGenerosPage,
+    AdministraGeneroPage,
     ItemDetailsPage,
     ListPage
   ],
@@ -75,7 +87,12 @@ import { AdministraAutorProvider } from '../providers/administra-autor/administr
     AdministrarLibrosProvider,
     AdministraLibroProvider,
     AdministrarAutoresProvider,
-    AdministraAutorProvider
+    AdministraAutorProvider,
+    AdministrarUsuariosProvider,
+    AdministraUsuarioProvider,
+    AdministrarGenerosProvider,
+    AdministraGeneroProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}

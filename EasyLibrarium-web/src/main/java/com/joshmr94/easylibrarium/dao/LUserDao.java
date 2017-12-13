@@ -127,4 +127,21 @@ public class LUserDao extends CommonSession<LUser>{
             closeEntityManager();
         }
     }
+    
+    public LUser getLUserCredentials(String username, String password) {
+        try {
+            String queryString;
+            queryString = String.format("select luser from " + LUser.class.getName() + " luser where luser.username = :username "
+                    + "and luser.password = :password", LUser.class.getName());
+            Query query = getEntityManager().createQuery(queryString);
+            query.setParameter("username", username);
+            query.setParameter("password", password);
+            return (LUser) query.getSingleResult();
+        } catch (NoResultException e) {
+            LOG.error("Error obtaining the LUser. Logging failed", e);
+            return null;
+        } finally {
+            closeEntityManager();
+        }
+    }
 }

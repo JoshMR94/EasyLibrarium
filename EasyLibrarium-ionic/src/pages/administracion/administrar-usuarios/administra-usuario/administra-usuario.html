@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EasyLibrarium</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>Administra Usuario: {{user.username}}</h3>
+
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Usuario:</ion-label>
+      <ion-input placeholder="{{user.username}}" [(ngModel)]="user.username" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Contraseña:</ion-label>
+      <ion-input placeholder="{{user.password}}" type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Email:</ion-label>
+      <ion-input placeholder="{{user.email}}" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Descripción:</ion-label>
+      <ion-input placeholder="{{user.description}}" [(ngModel)]="user.description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Tipo de Usuario:</ion-label>
+      <ion-input placeholder="{{user.userType}}" [(ngModel)]="user.userType"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full (click)="updateUser(user.id, user)">Modificar Usuario</button>
+  <br/>
+  <button ion-button full color="danger" (click)="deleteUser(user.id)">Eliminar Usuario</button>
+
+</ion-content>

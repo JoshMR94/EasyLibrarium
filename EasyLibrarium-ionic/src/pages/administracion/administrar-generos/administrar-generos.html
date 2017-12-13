@@ -12,5 +12,11 @@
 
   
   <h3>Administrar Géneros</h3>
+
+  <ion-list>
+    <button ion-item *ngFor="let genre of genres" (click)="administraGenero($event, genre)">
+      {{genre.name}}
+    </button>
+  </ion-list>
   
 </ion-content>

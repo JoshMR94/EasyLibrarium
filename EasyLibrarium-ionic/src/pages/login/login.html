@@ -28,16 +28,16 @@
       
     <ion-item>
       <ion-label fixed>Usuario</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" [(ngModel)]="username"></ion-input>
     </ion-item>
       
     <ion-item>
       <ion-label fixed>Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
       
   </ion-list>
 
-  <button ion-button full>Iniciar Sesión</button>
+  <button ion-button full (click)="getUserCredentials(username, password)">Iniciar Sesión</button>
   
 </ion-content>

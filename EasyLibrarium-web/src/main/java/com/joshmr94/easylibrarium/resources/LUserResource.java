@@ -41,7 +41,7 @@ public class LUserResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUsers(){
+    public Response getLUsers(){
         ArrayList<LUser> result = new ArrayList<>();
         try {
             
@@ -61,7 +61,7 @@ public class LUserResource {
     @GET
     @Path("/count")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUsersCount(){
+    public Response getLUsersCount(){
         long result; 
         try {
             
@@ -142,12 +142,29 @@ public class LUserResource {
     @DELETE
     @Path("/user/{id}/delete")  //delete books (with no relations)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteUser(@PathParam("id") Long id){
+    public Response deleteLUser(@PathParam("id") Long id){
         Boolean result = false;
         try {
             
             LUserService luserService = new LUserService();
             result = luserService.deleteLUser(id);
+            
+            return Response.ok(result).build();
+            
+        } catch (NullPointerException ex) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();   
+        }
+    }
+    
+    @GET
+    @Path("/user/{username}/{password}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getLUserCredentials(@PathParam("username") String username, @PathParam("password") String password){
+        LUser result = new LUser();
+        try {
+            
+            LUserService luserService = new LUserService();
+            result = luserService.getLUserCredentials(username, password);
             
             return Response.ok(result).build();
             
