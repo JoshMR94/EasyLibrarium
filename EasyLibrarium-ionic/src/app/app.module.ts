@@ -22,6 +22,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdministrarLibrosProvider } from '../providers/administrar-libros/administrar-libros';
+import { AdministraLibroProvider } from '../providers/administra-libro/administra-libro';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { AdministrarLibrosProvider } from '../providers/administrar-libros/admin
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AdministrarLibrosProvider
+    AdministrarLibrosProvider,
+    AdministraLibroProvider
   ]
 })
 export class AppModule {}

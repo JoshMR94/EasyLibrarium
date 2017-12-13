@@ -15,20 +15,22 @@
   <ion-list>
     <ion-item>
       <ion-label color="primary">Título:</ion-label>
-      <ion-input placeholder="{{book.title}}" [(ngModel)]="title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary">ISBN:</ion-label>
-      <ion-input placeholder="{{book.isbn}}" [(ngModel)]="isbn"></ion-input>
+      <ion-input placeholder="{{book.title}}" [(ngModel)]="book.title" readonly></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Editorial:</ion-label>
-      <ion-input placeholder="{{book.editorial}}" [(ngModel)]="editorial"></ion-input>
+      <ion-input placeholder="{{book.editorial}}" [(ngModel)]="book.editorial"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Fecha de Publicacion:</ion-label>
-      <ion-input placeholder="{{book.publicationDate}}" [(ngModel)]="publicationDate"></ion-input>
+      <ion-input placeholder="{{book.publicationDate}}" [(ngModel)]="book.publicationDate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">ISBN:</ion-label>
+      <ion-input placeholder="{{book.isbn}}" [(ngModel)]="book.isbn"></ion-input>
     </ion-item>
   </ion-list>
+
+  <button ion-button full (click)="updateBook(book.id, book)">Modificar Libro</button>
   
 </ion-content>
