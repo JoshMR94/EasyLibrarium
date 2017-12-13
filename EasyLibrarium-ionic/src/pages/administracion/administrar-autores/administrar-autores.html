@@ -12,5 +12,11 @@
 
   
   <h3>Administrar Autores</h3>
+
+  <ion-list>
+    <button ion-item *ngFor="let author of authors" (click)="administraAutor($event, author)">
+      {{author.name}} {{author.surname}}
+    </button>
+</ion-list>
   
 </ion-content>

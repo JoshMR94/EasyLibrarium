@@ -14,7 +14,7 @@
   <h3>Administrar Libros</h3>
 
   <ion-list>
-      <button ion-item *ngFor="let book of books" (click)="administraLibro($event, book)">
+      <button ion-item *ngFor="let book of books" >
         {{book.title}}
       </button>
   </ion-list>

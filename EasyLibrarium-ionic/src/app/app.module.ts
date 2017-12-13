@@ -13,6 +13,7 @@ import { AdministracionPage } from '../pages/administracion/administracion';
 import { AdministrarLibrosPage } from '../pages/administracion/administrar-libros/administrar-libros';
 import { AdministraLibroPage } from '../pages/administracion/administrar-libros/administra-libro/administra-libro';
 import { AdministrarAutoresPage } from '../pages/administracion/administrar-autores/administrar-autores';
+import { AdministraAutorPage } from '../pages/administracion/administrar-autores/administra-autor/administra-autor';
 import { AdministrarUsuariosPage } from '../pages/administracion/administrar-usuarios/administrar-usuarios';
 import { AdministrarGenerosPage } from '../pages/administracion/administrar-generos/administrar-generos';
 
@@ -23,6 +24,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AdministrarLibrosProvider } from '../providers/administrar-libros/administrar-libros';
 import { AdministraLibroProvider } from '../providers/administra-libro/administra-libro';
+import { AdministrarAutoresProvider } from '../providers/administrar-autores/administrar-autores';
+import { AdministraAutorProvider } from '../providers/administra-autor/administra-autor';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { AdministraLibroProvider } from '../providers/administra-libro/administr
     AdministrarLibrosPage,
     AdministraLibroPage,
     AdministrarAutoresPage,
+    AdministraAutorPage,
     AdministrarUsuariosPage,
     AdministrarGenerosPage,
     ItemDetailsPage,
@@ -58,6 +62,7 @@ import { AdministraLibroProvider } from '../providers/administra-libro/administr
     AdministrarLibrosPage,
     AdministraLibroPage,
     AdministrarAutoresPage,
+    AdministraAutorPage,
     AdministrarUsuariosPage,
     AdministrarGenerosPage,
     ItemDetailsPage,
@@ -68,7 +73,9 @@ import { AdministraLibroProvider } from '../providers/administra-libro/administr
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AdministrarLibrosProvider,
-    AdministraLibroProvider
+    AdministraLibroProvider,
+    AdministrarAutoresProvider,
+    AdministraAutorProvider
   ]
 })
 export class AppModule {}

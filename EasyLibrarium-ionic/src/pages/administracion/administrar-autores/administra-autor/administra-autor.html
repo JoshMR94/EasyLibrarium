@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EasyLibrarium</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>Administra Autor: {{author.name}} {{author.surname}}</h3>
+
+  
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Nombre:</ion-label>
+      <ion-input placeholder="{{author.name}}" [(ngModel)]="author.name" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Apellido:</ion-label>
+      <ion-input placeholder="{{author.surname}}" [(ngModel)]="author.surname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Fecha de Nacimiento:</ion-label>
+      <ion-input placeholder="{{author.birthDate | date: 'yyyy/MM/dd' }}" [(ngModel)]="author.birthDate"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="primary">Descripcion:</ion-label>
+      <ion-input placeholder="{{author.description}}" [(ngModel)]="author.description"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full (click)="updateAuthor(author.id, author)">Modificar Autor</button>
+  <br/>
+  <button ion-button full color="danger" (click)="deleteAuthor(author.id)">Eliminar Autor</button>
+  
+</ion-content>

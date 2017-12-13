@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController } from 'ionic-angular';
 
 import { AdministraLibroProvider } from '../../../../providers/administra-libro/administra-libro';
 
@@ -11,7 +11,7 @@ export class AdministraLibroPage {
 
   book: any;
 
-  constructor(public administraLibroProvider: AdministraLibroProvider, navParams: NavParams) {
+  constructor(public administraLibroProvider: AdministraLibroProvider, navParams: NavParams, public navCtrl: NavController) {
     this.book = navParams.get('book');
   }
 
@@ -20,6 +20,12 @@ export class AdministraLibroPage {
       console.log(this.book);
       }
     )
+  }
+
+  deleteBook(id: number){
+    this.administraLibroProvider.deleteBook(id);
+    this.navCtrl.pop();
+    this.navCtrl.pop();
   }
   
 }
