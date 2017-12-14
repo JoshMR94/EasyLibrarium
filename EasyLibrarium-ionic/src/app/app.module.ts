@@ -3,6 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { LoginPage } from '../pages/login/login';
 import { NoticiasPage } from '../pages/noticias/noticias';
@@ -59,6 +60,7 @@ import { LoginProvider } from '../providers/login/login';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot() //storage here
   ],
   bootstrap: [IonicApp],
   entryComponents: [

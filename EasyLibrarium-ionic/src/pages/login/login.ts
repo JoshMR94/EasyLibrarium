@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { LoginProvider } from '../../providers/login/login';
 
@@ -14,13 +15,32 @@ export class LoginPage {
 
   user: any;
 
-  constructor(public loginProvider: LoginProvider, public navCtrl: NavController) {
+  usernameC: any;
+  userTypeC: any;
+
+  constructor(public loginProvider: LoginProvider, public navCtrl: NavController, private storage: Storage) {
   }
 
   getUserCredentials(username, password){
     this.loginProvider.getUsersCredentials(username, password).then(data => {
       this.user = data;
+      if(this.user != ""){
+        this.storage.set('userType', this.user.userType);
+        this.storage.set('username', this.user.username);
+        this.setUserCredentials();
+      } 
       console.log(this.user);
     });
   }
+
+  setUserCredentials(){
+    this.storage.get('userType').then((val) => {
+      this.userTypeC = val;
+    });
+
+    this.storage.get('username').then((val) => {
+      this.usernameC = val;
+    });
+  }
+
 }
