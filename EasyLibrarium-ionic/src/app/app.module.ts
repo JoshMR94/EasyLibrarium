@@ -35,6 +35,7 @@ import { AdministraUsuarioProvider } from '../providers/administra-usuario/admin
 import { AdministrarGenerosProvider } from '../providers/administrar-generos/administrar-generos';
 import { AdministraGeneroProvider } from '../providers/administra-genero/administra-genero';
 import { LoginProvider } from '../providers/login/login';
+import { MisLibrosProvider } from '../providers/mis-libros/mis-libros';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { LoginProvider } from '../providers/login/login';
     AdministraUsuarioProvider,
     AdministrarGenerosProvider,
     AdministraGeneroProvider,
-    LoginProvider
+    LoginProvider,
+    MisLibrosProvider
   ]
 })
 export class AppModule {}

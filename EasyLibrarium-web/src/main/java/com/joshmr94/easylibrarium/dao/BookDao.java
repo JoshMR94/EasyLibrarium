@@ -128,4 +128,23 @@ public class BookDao extends CommonSession<Book>{
         }
     }
     
+    /*
+    public List<Book> getBooksByLUserId(Long id) {
+        try {
+            String queryString;
+            queryString = String.format("select b from " + Book.class.getName() + " b"
+                    + " INNER JOIN books_luser bl"
+                    + " ON b.id = bl.id"
+                    + " where bl.id = :id", Book.class.getName());
+            Query query = getEntityManager().createQuery(queryString);
+            query.setParameter("id", id);
+            return (List<Book>) query.getResultList();
+        } catch (NoResultException e) {
+            LOG.error("Error obtaining the book by id", e);
+            return null;
+        } finally {
+            closeEntityManager();
+        }
+    }
+    */
 }

@@ -30,6 +30,7 @@ export class LoginPage {
       if(this.user != ""){
         this.storage.set('userType', this.user.userType);
         this.storage.set('username', this.user.username);
+        this.storage.set('id', this.user.id);
         this.setUserCredentials();
         this.navCtrl.setRoot(NoticiasPage);
       } 
