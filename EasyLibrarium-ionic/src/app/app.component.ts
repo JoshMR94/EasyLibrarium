@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../pages/login/login';
 import { NoticiasPage } from '../pages/noticias/noticias';
@@ -9,7 +10,7 @@ import { MisAutoresPage } from '../pages/mis-autores/mis-autores';
 import { MiCuentaPage } from '../pages/mi-cuenta/mi-cuenta';
 import { AdministracionPage } from '../pages/administracion/administracion';
 
-import { ListPage } from '../pages/list/list';
+//import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,28 +22,36 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
+  // make LoginPage the root (or first) page
   rootPage = LoginPage;
   pages: Array<{title: string, component: any}>;
+
+  usernameC: any;
+  userTypeC: any;
+
+  sessionAdmin: boolean = false;
 
   constructor(
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    private storage: Storage
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Login', component: LoginPage },
+      //{ title: 'Login', component: LoginPage },
       { title: 'Noticias', component: NoticiasPage },
       { title: 'Mis Libros', component: MisLibrosPage },
       { title: 'Mis Autores', component: MisAutoresPage },
       { title: 'Mi Cuenta', component: MiCuentaPage},
-      { title: 'Administracion', component: AdministracionPage}
+      //{ title: 'Administracion', component: AdministracionPage}
       //{ title: 'My First List', component: ListPage }
     ];
+
+    this.setUserCredentials();
   }
 
   initializeApp() {
@@ -60,4 +69,31 @@ export class MyApp {
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+
+  setUserCredentials(){
+    this.storage.get('userType').then((val) => {
+      this.userTypeC = val;
+      if(this.userTypeC == "ADMIN"){
+        this.sessionAdmin = true;
+      }
+    });
+
+    this.storage.get('username').then((val) => {
+      this.usernameC = val;
+    });
+  }
+
+  administrationZone(){
+    this.menu.close();
+    this.nav.push(AdministracionPage);
+  }
+
+  endSession(){
+    this.storage.remove('userType'); 
+    this.storage.remove('username');
+    this.menu.close();
+
+    this.nav.setRoot(LoginPage);
+  }
+
 }

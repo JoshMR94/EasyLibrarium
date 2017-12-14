@@ -2,7 +2,7 @@
 
   <ion-header>
     <ion-toolbar>
-      <ion-title>Páginas</ion-title>
+      <ion-title>Páginas {{userTypeC}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -11,6 +11,14 @@
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <div *ngIf="sessionAdmin">
+        <button ion-item (click)="administrationZone()">
+          Administración
+        </button> 
+      </div>
+      <button ion-item (click)="endSession()">
+        Cerrar Sesión
+      </button> 
     </ion-list>
   </ion-content>
 

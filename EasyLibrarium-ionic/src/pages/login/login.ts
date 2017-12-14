@@ -3,12 +3,15 @@ import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { LoginProvider } from '../../providers/login/login';
+import { NoticiasPage } from '../noticias/noticias';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
+
+  rootPage = NoticiasPage;
 
   username: String;
   password: String;
@@ -28,6 +31,7 @@ export class LoginPage {
         this.storage.set('userType', this.user.userType);
         this.storage.set('username', this.user.username);
         this.setUserCredentials();
+        this.navCtrl.setRoot(NoticiasPage);
       } 
       console.log(this.user);
     });
