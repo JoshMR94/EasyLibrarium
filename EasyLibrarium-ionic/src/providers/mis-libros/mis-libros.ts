@@ -14,4 +14,14 @@ export class MisLibrosProvider {
     console.log('Hello MisLibrosProvider Provider');
   }
 
+  public getBooksByIdUser(id:number){
+    return new Promise(resolve => {
+      this.http.get('http://localhost:8081/EasyLibrarium-web/webresources/users/user/'+id).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
 }

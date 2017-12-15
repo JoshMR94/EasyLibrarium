@@ -11,5 +11,23 @@
 <ion-content padding>
 
   <h3>Mis Libros</h3>
-  
+
+  <!--
+  <ion-list>
+    <button ion-item *ngFor="let book of books" >
+      {{ book.title }}
+    </button>  
+  </ion-list>
+  -->
+  <ion-card *ngFor="let book of books">
+    <!--<img src=""/>-->
+    <ion-card-content>
+      <ion-card-title>
+        {{book.title}}
+      </ion-card-title>
+      <p>
+        {{book.editorial}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
