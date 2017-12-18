@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,8 +53,8 @@ public class Book implements Serializable{
     @JsonIgnore
     private List<LUser> users;
     
-    @ManyToMany(mappedBy = "books") //mapped for books attribute in Author
-    @JsonIgnore
+    @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER) //mapped for books attribute in Author
+    //@JsonIgnore
     private List<Author> authors;
     
     @ManyToMany(mappedBy = "books") //mapped for books attribute in Genre

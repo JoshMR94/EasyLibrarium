@@ -1,5 +1,6 @@
 package com.joshmr94.easylibrarium.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +50,7 @@ public class Author implements Serializable {
             joinColumns=@JoinColumn(name = "author_id", referencedColumnName = "id"),
             inverseJoinColumns =@JoinColumn(name="book_id", referencedColumnName = "id")
     )
+    @JsonIgnore
     private List<Book> books;
 
     public Author(Long id, String name, String surname, Date birthDate, String description) {
