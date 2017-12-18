@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { LoginProvider } from '../../providers/login/login';
 import { NoticiasPage } from '../noticias/noticias';
+import { RegistroPage } from './registro/registro';
+
+import { LoginProvider } from '../../providers/login/login';
+
 
 @Component({
   selector: 'page-login',
@@ -47,5 +50,10 @@ export class LoginPage {
       this.usernameC = val;
     });
   }
+
+  irRegistro(){
+    this.navCtrl.push(RegistroPage)
+  }
+
 
 }

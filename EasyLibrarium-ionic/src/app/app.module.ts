@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { LoginPage } from '../pages/login/login';
+import { RegistroPage } from '../pages/login/registro/registro';
 import { NoticiasPage } from '../pages/noticias/noticias';
 import { MisLibrosPage } from '../pages/mis-libros/mis-libros';
 import { MisAutoresPage } from '../pages/mis-autores/mis-autores';
@@ -38,11 +39,13 @@ import { LoginProvider } from '../providers/login/login';
 import { MisLibrosProvider } from '../providers/mis-libros/mis-libros';
 import { MiCuentaProvider } from '../providers/mi-cuenta/mi-cuenta';
 import { MisAutoresProvider } from '../providers/mis-autores/mis-autores';
+import { RegistroProvider } from '../providers/registro/registro';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
+    RegistroPage,
     NoticiasPage,
     MisLibrosPage,
     MisAutoresPage,
@@ -69,6 +72,7 @@ import { MisAutoresProvider } from '../providers/mis-autores/mis-autores';
   entryComponents: [
     MyApp,
     LoginPage,
+    RegistroPage,
     NoticiasPage,
     MisLibrosPage,
     MisAutoresPage,
@@ -100,7 +104,8 @@ import { MisAutoresProvider } from '../providers/mis-autores/mis-autores';
     LoginProvider,
     MisLibrosProvider,
     MiCuentaProvider,
-    MisAutoresProvider
+    MisAutoresProvider,
+    RegistroProvider
   ]
 })
 export class AppModule {}

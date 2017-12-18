@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>EasyLibrarium</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>Registro</h3>
+
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Usuario:</ion-label>
+      <ion-input [(ngModel)]="user.username" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Contraseña:</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Email:</ion-label>
+      <ion-input [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Descripción:</ion-label>
+      <ion-input [(ngModel)]="user.description"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full color="dark" (click)="insertUser()">Registrarse</button>
+  
+</ion-content>
