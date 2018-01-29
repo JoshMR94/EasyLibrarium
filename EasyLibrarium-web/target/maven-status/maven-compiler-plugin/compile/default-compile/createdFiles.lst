@@ -1,5 +1,6 @@
 com\joshmr94\easylibrarium\dao\LUserDao.class
 com\joshmr94\easylibrarium\model\LUser.class
+com\joshmr94\easylibrarium\resources\FacebookResource.class
 com\joshmr94\easylibrarium\resources\AuthorResource.class
 com\joshmr94\easylibrarium\model\LUser_.class
 com\joshmr94\easylibrarium\resources\ApplicationConfig.class

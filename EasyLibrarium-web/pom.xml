@@ -125,6 +125,16 @@
 
         <!-- JSON Mapping with Gson -->
         
+        <!-- Facebook authentication -->
+        
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>5.1.0</version> 
+        </dependency>
+        
+        <!-- Facebook authentication -->
+        
     </dependencies>
 
     <build>

@@ -48,7 +48,7 @@ public class Author implements Serializable {
     @JoinTable(
             name="books_author",
             joinColumns=@JoinColumn(name = "author_id", referencedColumnName = "id"),
-            inverseJoinColumns =@JoinColumn(name="book_id", referencedColumnName = "id")
+            inverseJoinColumns=@JoinColumn(name="book_id", referencedColumnName = "id")
     )
     @JsonIgnore
     private List<Book> books;
