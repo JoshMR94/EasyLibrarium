@@ -5,20 +5,22 @@
  */
 package com.joshmr94.easylibrarium.resources;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.apis.FacebookApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.model.OAuthRequest;
 import com.github.scribejava.core.model.Verb;
 import com.github.scribejava.core.oauth.OAuth20Service;
-import com.joshmr94.easylibrarium.model.Genre;
-import com.joshmr94.easylibrarium.service.GenreService;
+import com.google.gson.Gson;
+import com.joshmr94.easylibrarium.model.LUser;
+import com.joshmr94.easylibrarium.service.LUserService;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -39,10 +41,11 @@ public class FacebookResource {
     private UriInfo context;
     
     private static final String NETWORK_NAME = "Facebook";
-    private static final String PROTECTED_RESOURCE_URL = "https://graph.facebook.com/v2.11/me?fields=id,email,picture";
-    private static final String clientId = "";
-    private static final String clientSecret = "";
+    private static final String PROTECTED_RESOURCE_URL = "https://graph.facebook.com/v2.11/me?fields=id,name,email";
+    private static final String clientId = "1160097630787700";
+    private static final String clientSecret = "d8fd8f7a1c41160ca890cc5f425183b2";
     private static OAuth20Service service;
+    
     /**
      * Creates a new instance of FacebookResource
      */
@@ -70,13 +73,31 @@ public class FacebookResource {
     @Path("/callback")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCallback(@QueryParam("code") String code){
+        LUser result = new LUser();
+        LUser insertResult = new LUser();
         try {          
             final OAuth2AccessToken accessToken = service.getAccessToken(code);
             final OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL);
             service.signRequest(accessToken, request);
             final com.github.scribejava.core.model.Response response = service.execute(request);
             
-            return Response.ok(response.getBody()).build();
+            //insertar en base de datos el body
+            /*
+            JsonNode tree = mapper.readTree(response.getBody());
+            result.setId(tree.get("id").asLong());
+            result.setEmail(tree.get("email").asText());
+            result.setDescription(tree.get("name").asText());
+            */     
+            
+            result = new Gson().fromJson(response.getBody(), LUser.class);
+            insertResult.setEmail(result.getEmail());
+            insertResult.setUsername("randomValueUser"); //
+            insertResult.setPassword("randomValuePass");
+            
+            LUserService luserService = new LUserService();
+            luserService.insertLUser(insertResult);
+            
+            return Response.ok(insertResult).build();
             
         } catch (IOException | InterruptedException | ExecutionException ex) { 
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();      

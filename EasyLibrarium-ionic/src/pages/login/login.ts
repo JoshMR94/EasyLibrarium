@@ -41,6 +41,20 @@ export class LoginPage {
     });
   }
 
+  getUserCredentiaslFromFacebook(){
+    this.loginProvider.getUsersCredentialsFromFacebook().then(data => {
+      this.user = data;
+      if(this.user != ""){
+        this.storage.set('userType', this.user.userType);
+        this.storage.set('username', this.user.username);
+        this.storage.set('id', this.user.id);
+        this.setUserCredentials();
+        this.navCtrl.setRoot(NoticiasPage);
+      } 
+      console.log(this.user);
+    });
+  }
+
   setUserCredentials(){
     this.storage.get('userType').then((val) => {
       this.userTypeC = val;

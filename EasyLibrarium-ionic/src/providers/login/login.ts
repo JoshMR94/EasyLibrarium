@@ -24,4 +24,14 @@ export class LoginProvider {
     });
   }
 
+  public getUsersCredentialsFromFacebook(){
+    return new Promise(resolve => {
+      this.http.get('http://localhost:8081/EasyLibrarium-web/webresources/facebook').subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
 }
